@@ -5,5 +5,5 @@ class Item:
         self.valor = valor
 
     def usar(self, personagem):
-        # TODO: implementar efeito do item
-        pass
+        vida_maxima = getattr(personagem, 'vida_maxima', float('inf'))
+        personagem.vida = min(vida_maxima, personagem.vida + self.valor)
