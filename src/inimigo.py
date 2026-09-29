@@ -12,5 +12,4 @@ class Inimigo(Personagem):
         )
 
     def atacar(self, alvo):
-        # TODO: implementar ataque
-        pass
+        self.calcular_ataque(alvo, self.ataque)
