@@ -5,7 +5,7 @@ class Mago(Personagem):
     def __init__(self, nome):
         super().__init__(
             nome=nome,
-            vida=80,
+            vida=90,
             ataque=30,
             defesa=5
         )
@@ -13,14 +13,12 @@ class Mago(Personagem):
         self.mana = 100
 
     def atacar(self, alvo):
-        # TODO: implementar ataque normal
-        pass
+        self.calcular_ataque(alvo, self.ataque)
 
     def usar_magia(self, alvo):
-        # TODO: implementar magia
-
         if self.mana <= 0:
             print("O mago não possui mana suficiente.")
             return
 
-        pass
+        self.calcular_ataque(alvo, self.ataque + 25)
+        self.mana -= 45
