@@ -1,4 +1,8 @@
-from personagem import Personagem
+try:
+    from .personagem import Personagem
+except ImportError:  # pragma: no cover
+    from personagem import Personagem
+
 
 class Mago(Personagem):
 
@@ -9,8 +13,13 @@ class Mago(Personagem):
             ataque=30,
             defesa=5
         )
+        self.mana_maxima = 100
+        self.mana = self.mana_maxima
 
-        self.mana = 100
+    def defender(self):
+        super().defender()
+        self.mana = min(self.mana_maxima, self.mana + 35)
+        print(f"{self.nome} recuperou 35 de mana. Mana atual: {self.mana}/{self.mana_maxima}.")
 
     def atacar(self, alvo):
         self.calcular_ataque(alvo, self.ataque)
@@ -21,4 +30,4 @@ class Mago(Personagem):
             return
 
         self.calcular_ataque(alvo, self.ataque + 25)
-        self.mana -= 45
+        self.mana = max(0, self.mana - 45)

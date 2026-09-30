@@ -1,15 +1,15 @@
-from personagem import Personagem
+try:
+    from .inimigo import Inimigo
+except ImportError:  # pragma: no cover
+    from inimigo import Inimigo
 
 
-class Inimigo(Personagem):
+class Boss(Inimigo):
 
-    def __init__(self, nome, vida, ataque, defesa):
+    def __init__(self, nome="Rei Goblin"):
         super().__init__(
             nome=nome,
-            vida=170,
-            ataque=40,
-            defesa=15
+            vida=220,
+            ataque=35,
+            defesa=20
         )
-
-    def atacar(self, alvo):
-        self.calcular_ataque(alvo, self.ataque)

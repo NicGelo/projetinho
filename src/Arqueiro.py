@@ -1,4 +1,7 @@
-from personagem import Personagem
+try:
+    from .personagem import Personagem
+except ImportError:  # pragma: no cover
+    from personagem import Personagem
 
 
 class Arqueiro(Personagem):
